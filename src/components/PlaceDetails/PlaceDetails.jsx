@@ -6,13 +6,10 @@ import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles.js';
 
-
-// we send 'place' from the List component
 const PlaceDetails = ({ place, selected, refProp }) => {
 	if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	const classes = useStyles();
 
-// window.open(place.web_url, '_blank') => '_blank' in cardActions means we open the link in a new window, rather than exisitng window
 	return (
 		<Card elevation={6}>
       		<CardMedia

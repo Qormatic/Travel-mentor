@@ -5,14 +5,10 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
 
-// useState hook consists of a state and a function that modifies the state
-
 const List = ({ places, childClicked, isLoading,  type, setType, rating, setRating }) => {
 	const classes = useStyles();
 	const [elRefs, setElRefs] = useState([]);
 
-// useEffect for when place changes so places is in the dependency
-// create many refs which each represent a grid item
 	useEffect(() => {
 		setElRefs((refs) => Array(places?.length).fill().map((_, i) => refs[i] || createRef()));
 	  }, [places]);

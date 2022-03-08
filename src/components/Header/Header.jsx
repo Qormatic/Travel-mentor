@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-// import styles from styles.js
 import useStyles from './styles.js';
 
 const Header = ({ setCoordinates }) => {
@@ -12,7 +11,6 @@ const Header = ({ setCoordinates }) => {
   const onLoad = (autoC) => setAutoComplete(autoC);
 
   const onPlaceChanged = () => {
-	  // From google maps documentation
 		const lat = autocomplete.getPlace().geometry.location.lat();
 		const lng = autocomplete.getPlace().geometry.location.lng();
 

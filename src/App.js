@@ -23,25 +23,18 @@ const [isLoading, setIsLoading] = useState(false);
 const [type, setType] = useState('restaurants');
 const [rating, setRating] = useState(3);
 
-// destructure navigator.geolocation.getCurrentPosition twice and make it our starting coordinates
-// this is the starting useState for our setCoordinates function
-// empty dependency array in this useEffect because it only needs to run at the start
 	useEffect(() => {
 	    navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
 	      setCoordinates({ lat: latitude, lng: longitude });
 	    })
 	  }, []);
 
-// this one chnages when rating is selected from the list
 	useEffect(() => {
 		const filtered = places.filter((place) => Number(place.rating) > rating);
 	
 		setFilteredPlaces(filtered);
 	  }, [rating]);
 
-// use .then in the useEffect because the api calls are asynchronous
-// .then has the data from the api calls which we can work with
-// to rerun the useEffect every time map/coordinates, type, bounds chnage we need to add dependencies "[type, bounds]"
 	useEffect(() => {
 		if(bounds.sw && bounds.ne){
 		  setIsLoading(true);
@@ -78,7 +71,6 @@ const [rating, setRating] = useState(3);
         </Grid>
         <Grid item xs={12} md={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Map 
-		  	// setCoordinates is the function to get the coordinates state which we also use in map
 		  	setCoordinates={setCoordinates}
 		  	setBounds={setBounds}
 		  	coordinates={coordinates}

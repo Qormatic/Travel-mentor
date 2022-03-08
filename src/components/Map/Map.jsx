@@ -8,10 +8,6 @@ import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 import mapStyles from './mapStyles';
 
-// isMobile is false if width of device is over 600px
-// to get bootstrapURLKey we set up a project in google developers console
-// GoogleMapReact tells us when coordinates change
-
 const Map = ({ places, setCoordinates, setBounds, setChildClicked, coordinates, weatherData }) => {
 	const classes = useStyles();
 	const matches = useMediaQuery('(min-width:600px)');
@@ -63,7 +59,6 @@ const Map = ({ places, setCoordinates, setBounds, setChildClicked, coordinates, 
           </div>
         ))}
 		{weatherData?.list?.length && weatherData.list.map((data, i) => (
-			// for each weather data we return a div
           <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
             <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="100px" />
           </div>
